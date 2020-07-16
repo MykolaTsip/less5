@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {UserService} from './services/user.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'less5';
+
+  id = 0;
+
+constructor(private userService: UserService) {
+}
+
+  getUserById(): void {
+    this.userService.getUser(this.id).subscribe(value => console.log(value));
+  }
 }
